@@ -1,11 +1,11 @@
 <?php
 
-class       DataNode {
+/*class       DataNode {
     //public $Id; //look up if it's needed or it's created automatically
     public  $mainData;
     public  $parentId;
     public  $createDate;
-}
+} */
 
 function    printTable($testDB)
 {
