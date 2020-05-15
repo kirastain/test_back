@@ -41,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../php/php.exe" />
   </component>
   <component name="RunManager">
     <configuration name="main.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/main.php">
@@ -69,7 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1589524131130</updated>
       <workItem from="1589524140956" duration="201000" />
-      <workItem from="1589542183438" duration="668000" />
+      <workItem from="1589542183438" duration="4404000" />
     </task>
     <servers />
   </component>
@@ -89,9 +89,33 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="351" y="23" key="#main.php" timestamp="1589542342553">
+    <state x="222" y="0" key="#CLI_Interpreters" timestamp="1589543363962">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="351" y="23" key="#main.php/0.0.1280.680@0.0.1280.680" timestamp="1589542342553" />
+    <state x="222" y="0" key="#CLI_Interpreters/0.0.1280.680@0.0.1280.680" timestamp="1589543363962" />
+    <state x="351" y="23" key="#main.php" timestamp="1589543366077">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="351" y="23" key="#main.php/0.0.1280.680@0.0.1280.680" timestamp="1589543366077" />
+    <state x="422" y="94" key="FileChooserDialogImpl" timestamp="1589543352991">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="422" y="94" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589543352991" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1589546518071">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589546518071" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1589546518071">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589546518071" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1589546518071">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589546518071" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1589546518071">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589546518071" />
   </component>
 </project>
