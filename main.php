@@ -2,41 +2,57 @@
 
 class       DataNode {
     //public $Id; //look up if it's needed or it's created automatically
-    public  $MainData;
-    public  $ParentId;
-    public  $CreateDate;
+    public  $mainData;
+    public  $parentId;
+    public  $createDate;
 }
 
-function    PrintTable($TestDB)
+function    PrintTable($testDB)
 {
-    $table = $TestDB->query('SELECT * FROM maindata'); //PDOStatement
+    $table = $testDB->query('SELECT * FROM maindata'); //PDOStatement
     if ($table)
     {
-        foreach ($table as $row)
+        $result = $table->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row)
         {
-            print json_encode($row, JSON_PRETTY_PRINT); //weird output
+            print (json_encode($row, JSON_PRETTY_PRINT));
         }
+    }
+    else
+    {
+        print ("Table not found\n");
     }
 }
 
-function    PrintTableId($TestDB, $CurrentId)
+function    PrintTableId($testDB, $currentId)
 {
-    $line = $TestDB->query("SELECT * FROM maindata WHERE id=$CurrentId");
+    $line = $testDB->query("SELECT * FROM maindata WHERE id=$currentId");
     if ($line)
     {
-        foreach ($line as $row)
-        {
-            /*print $row['id'] . '\t';
-            print $row['main_data'] . '\t';
-            print $row['parent_id'] . '\t';
-            print $row['create_date'] . '\t';*/
-            print json_encode($row, JSON_PRETTY_PRINT);
-        }
+        $result = $line->fetch(PDO::FETCH_ASSOC);
+        print (json_encode($result, JSON_PRETTY_PRINT));
+    }
+    else
+    {
+        print ("id not found\n");
+    }
+}
+
+function    UpdateTableId($testDB, $currentId, $updData)
+{
+    $upd = $testDB->query("UPDATE maindata SET main_data='$updData' WHERE id=$currentId");
+    if ($upd)
+    {
+        PrintTableId($testDB, $currentId);
+    }
+    else
+    {
+        print ("Error updating data\n");
     }
 }
 
 $myDB = new PDO('pgsql:host=localhost;dbname=testdb', 'postgres', '1410');
-PrintTable($myDB); //bad getaway when trying to view in browser
+//PrintTable($myDB); //bad getaway when trying to view in browser
 //PrintTableId($myDB, 1);
-
+UpdateTableId($myDB, 2, "edited data");
 
