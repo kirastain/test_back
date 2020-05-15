@@ -7,47 +7,37 @@ class       DataNode {
     public  $createDate;
 }
 
-function    PrintTable($testDB)
+function    printTable($testDB)
 {
     $table = $testDB->query('SELECT * FROM maindata'); //PDOStatement
-    if ($table)
-    {
+    if ($table) {
         $result = $table->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as $row)
-        {
-            print (json_encode($row, JSON_PRETTY_PRINT));
+        foreach ($result as $row) {
+            print(json_encode($row, JSON_PRETTY_PRINT));
         }
-    }
-    else
-    {
-        print ("Table not found\n");
+    } else {
+        print("Table not found\n");
     }
 }
 
-function    PrintTableId($testDB, $currentId)
+function    printTableId($testDB, $currentId)
 {
     $line = $testDB->query("SELECT * FROM maindata WHERE id=$currentId");
-    if ($line)
-    {
+    if ($line) {
         $result = $line->fetch(PDO::FETCH_ASSOC);
-        print (json_encode($result, JSON_PRETTY_PRINT));
-    }
-    else
-    {
-        print ("id not found\n");
+        print(json_encode($result, JSON_PRETTY_PRINT));
+    } else {
+        print("id not found\n");
     }
 }
 
-function    UpdateTableId($testDB, $currentId, $updData)
+function    updateTableId($testDB, $currentId, $updData)
 {
     $upd = $testDB->query("UPDATE maindata SET main_data='$updData' WHERE id=$currentId");
-    if ($upd)
-    {
-        PrintTableId($testDB, $currentId);
-    }
-    else
-    {
-        print ("Error updating data\n");
+    if ($upd) {
+        printTableId($testDB, $currentId);
+    } else {
+        print("Error updating data\n");
     }
 }
 
