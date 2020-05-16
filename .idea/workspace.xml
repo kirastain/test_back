@@ -41,22 +41,6 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
-  <component name="RunManager">
-    <configuration name="main.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/main.php">
-      <CommandLine>
-        <PhpTestInterpreterSettings>
-          <option name="interpreterName" value="PHP" />
-        </PhpTestInterpreterSettings>
-      </CommandLine>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="PHP Script.main.php" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -69,7 +53,6 @@
       <option name="presentableId" value="Default" />
       <updated>1589524131130</updated>
       <workItem from="1589524140956" duration="201000" />
-      <workItem from="1589542183438" duration="668000" />
     </task>
     <servers />
   </component>
@@ -86,12 +69,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="351" y="23" key="#main.php" timestamp="1589542342553">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="351" y="23" key="#main.php/0.0.1280.680@0.0.1280.680" timestamp="1589542342553" />
   </component>
 </project>
