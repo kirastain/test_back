@@ -1,4 +1,7 @@
 # IntellijIdea files
 *.iml
 .idea
+.idea\*
 out
+.idea/workspace.xml
+*.xml
