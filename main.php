@@ -1,7 +1,7 @@
 <?php
 
 class       DataNode {
-    //public $Id; //look up if it's needed or it's created automatically
+    //public $Id;
     public  $MainData;
     public  $ParentId;
     public  $CreateDate;
@@ -14,7 +14,7 @@ function    PrintTable($TestDB)
     {
         foreach ($table as $row)
         {
-            print json_encode($row, JSON_PRETTY_PRINT); //weird output
+            print json_encode($row, JSON_PRETTY_PRINT);
         }
     }
 }
@@ -36,7 +36,7 @@ function    PrintTableId($TestDB, $CurrentId)
 }
 
 $myDB = new PDO('pgsql:host=localhost;dbname=testdb', 'postgres', '1410');
-PrintTable($myDB); //bad getaway when trying to view in browser
+PrintTable($myDB);
 //PrintTableId($myDB, 1);
 
 
