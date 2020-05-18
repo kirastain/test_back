@@ -1,5 +1,7 @@
 <?php
 
+include 'access.php';
+
 /*class DataNode {
     //public $Id; //look up if it's needed or it's created automatically
     public  $mainData;
@@ -7,39 +9,62 @@
     public  $createDate;
 } */
 
-function printTable($testDB): void
+/**
+ *
+ */
+
+function printTable(): void
 {
-    $table = $testDB->query('SELECT * FROM maindata'); //PDOStatement
-    if ($table) {
+    global $MYDB;
+
+    try {
+        $table = $MYDB->query('SELECT * FROM maindata'); //PDOStatement
+        if (!$table)
+            throw new Exception("Table not found");
         $result = $table->fetchAll(PDO::FETCH_ASSOC);
         print(json_encode($result, JSON_PRETTY_PRINT));
-    } else {
-        print("Table not found\n");
+    } catch (Exception $e) {
+        print("Error: " . $e->getMessage() . "\n");
     }
 }
 
-function printById($testDB, int $currentId): void
+/**
+ * @param int $currentId
+ */
+
+function printById(int $currentId): void
 {
-    $line = $testDB->query("SELECT * FROM maindata WHERE id=$currentId");
-    if ($line) {
+    global $MYDB;
+
+    try {
+        $line = $MYDB->query("SELECT * FROM maindata WHERE id=$currentId");
+        if (!$line)
+            throw new Exception("No such id");
         $result = $line->fetch(PDO::FETCH_ASSOC);
         print(json_encode($result, JSON_PRETTY_PRINT));
-    } else {
-        print("id not found\n");
+    } catch (Exception $e) {
+        print("Error: " . $e->getMessage() . "\n");
     }
 }
 
-function updateById($testDB, int $currentId, string $updData): void
+/**
+ * @param int $currentId
+ * @param string $updData
+ */
+
+function updateById(int $currentId, string $updData): void
 {
-    $upd = $testDB->query("UPDATE maindata SET main_data='$updData' WHERE id=$currentId");
-    if ($upd) {
-        printById($testDB, $currentId);
-    } else {
-        print("Error updating data\n");
+    global $MYDB;
+
+    try {
+        $upd = $MYDB->query("UPDATE maindata SET main_data='$updData' WHERE id=$currentId");
+        if (!$upd)
+            throw new Exception("Can't update");
+    } catch (Exception $e) {
+        print("Error: " . $e->getMessage() . "\n");
     }
 }
 
-$myDB = new PDO('pgsql:host=localhost;dbname=testdb', 'postgres', '1410');
-PrintTable($myDB); //bad getaway when trying to view in browser
+PrintTable(); //bad getaway when trying to view in browser
 //PrintById($myDB, 1);
 //UpdateById($myDB, 1, "edited");
