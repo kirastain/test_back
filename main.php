@@ -1,70 +1,43 @@
 <?php
-
-include 'access.php';
-
-/*class DataNode {
-    //public $Id; //look up if it's needed or it's created automatically
-    public  $mainData;
-    public  $parentId;
-    public  $createDate;
-} */
+include 'methods.php';
 
 /**
  *
  */
-
-function printTable(): void
+function userAction(): void
 {
-    global $MYDB;
-
-    try {
-        $table = $MYDB->query('SELECT * FROM maindata'); //PDOStatement
-        if (!$table)
-            throw new Exception("Table not found");
-        $result = $table->fetchAll(PDO::FETCH_ASSOC);
-        print(json_encode($result, JSON_PRETTY_PRINT));
-    } catch (Exception $e) {
-        print("Error: " . $e->getMessage() . "\n");
+    print("Choose action:\n");
+    print("1. Print the table\n");
+    print("2. Print the row\n");
+    print("3. Update the row\n");
+    print("0. Exit\n");
+    print("Action: ");
+    $action = readline("Action: ");
+    switch ($action) {
+        case 0:
+            exit();
+        case 1:
+            printTable();
+            break;
+        case 2:
+            print("Id: ");
+            $id = readline("Id: ");
+            printById($id);
+            break;
+        case 3:
+            print("Id: ");
+            $id = readline("Id: ");
+            print("New data: ");
+            $data = readline("New data: ");
+            updateById($id, $data);
+            break;
+        default:
+            print("Wrong option");
+            userAction();
+            break;
     }
+    print("\n");
+    userAction();
 }
 
-/**
- * @param int $currentId
- */
-
-function printById(int $currentId): void
-{
-    global $MYDB;
-
-    try {
-        $line = $MYDB->query("SELECT * FROM maindata WHERE id=$currentId");
-        if (!$line)
-            throw new Exception("No such id");
-        $result = $line->fetch(PDO::FETCH_ASSOC);
-        print(json_encode($result, JSON_PRETTY_PRINT));
-    } catch (Exception $e) {
-        print("Error: " . $e->getMessage() . "\n");
-    }
-}
-
-/**
- * @param int $currentId
- * @param string $updData
- */
-
-function updateById(int $currentId, string $updData): void
-{
-    global $MYDB;
-
-    try {
-        $upd = $MYDB->query("UPDATE maindata SET main_data='$updData' WHERE id=$currentId");
-        if (!$upd)
-            throw new Exception("Can't update");
-    } catch (Exception $e) {
-        print("Error: " . $e->getMessage() . "\n");
-    }
-}
-
-PrintTable(); //bad getaway when trying to view in browser
-//PrintById($myDB, 1);
-//UpdateById($myDB, 1, "edited");
+userAction();
