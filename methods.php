@@ -15,15 +15,17 @@ function printTable(): void
 {
     global $myDb;
 
+    $myDb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $myDb->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     try {
-        $table = $myDb->query('SELECT * FROM maindata'); //PDOStatement
-        if (!$table)
-            throw new Exception("Table not found");
+        $table = $myDb->query('SELECT * FROM maidata'); //PDOStatement
         $result = $table->fetchAll(PDO::FETCH_ASSOC);
         print(json_encode($result, JSON_PRETTY_PRINT));
-    } catch (Exception $e) {
-        print("Error: " . $e->getMessage() . "\n");
+    } catch (PDOException $e) {
+        var_dump($e->getMessage());
     }
+    //$result = $table->fetchAll(PDO::FETCH_ASSOC);
+    //print(json_encode($result, JSON_PRETTY_PRINT));
 }
 
 /**
@@ -33,14 +35,14 @@ function printById(int $currentId): void
 {
     global $myDb;
 
+    $myDb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $myDb->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     try {
         $line = $myDb->query("SELECT * FROM maindata WHERE id=$currentId");
-        if (!$line)
-            throw new Exception("No such id");
         $result = $line->fetch(PDO::FETCH_ASSOC);
         print(json_encode($result, JSON_PRETTY_PRINT));
     } catch (Exception $e) {
-        print("Error: " . $e->getMessage() . "\n");
+        var_dump(($e->getMessage()));
     }
 }
 
@@ -52,12 +54,12 @@ function updateById(int $currentId, string $updData): void
 {
     global $myDb;
 
+    $myDb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $myDb->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     try {
-        $upd = $myDb->query("UPDATE maindata SET main_data='$updData' WHERE id=$currentId");
-        if (!$upd)
-            throw new Exception("Can't update");
+        $upd = $myDb->query("UPDATE maidata SET main_data='$updData' WHERE id=$currentId");
         printById($currentId);
     } catch (Exception $e) {
-        print("Error: " . $e->getMessage() . "\n");
+        var_dump(($e->getMessage()));
     }
 }
