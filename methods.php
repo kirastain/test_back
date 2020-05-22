@@ -3,6 +3,8 @@ include 'access.php';
 include 'get_row.php';
 include 'get_table.php';
 include 'update_row.php';
+include 'get_heads.php';
+include 'update_heads.php';
 
 /*class DataNode {
     //public $Id; //look up if it's needed or it's created automatically

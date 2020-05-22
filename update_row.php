@@ -20,6 +20,6 @@ function updateById(int $currentId, string $updData): void
     }
 }
 
-$currentId = $_POST["id"];
-$upData = $_POST["main_data"];
-printById();
+//$currentId = (int)$_POST["id"];
+//$upData = (string)$_POST["main_data"];
+//updateById($currentId, $updData);

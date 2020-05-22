@@ -20,5 +20,5 @@ function printById(int $currentId): void
     }
 }
 
-$currentId = $_GET["id"];
-printById($currentId);
+//$currentId = (int)$_GET["id"];
+//printById($currentId);

@@ -10,6 +10,8 @@ function userAction(): void
     print("1. Print the table\n");
     print("2. Print the row\n");
     print("3. Update the row\n");
+    print("4. Print heads\n");
+    print("5. Update head list\n");
     print("0. Exit\n");
     print("Action: ");
     $action = readline("Action: ");
@@ -30,6 +32,17 @@ function userAction(): void
             print("New data: ");
             $data = readline("New data: ");
             updateById($id, $data);
+            break;
+        case 4:
+            print("Id: ");
+            $id = readline("Id: ");
+            printHeads($id);
+            break;
+        case 5:
+            print("Id: ");
+            $id = 3;
+            $updHeads = [1 => "Sauron", 2 => "Aragorn"];
+            updateHeads($id, $updHeads);
             break;
         default:
             print("Wrong option");
