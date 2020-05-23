@@ -9,7 +9,6 @@ function printHeads(int $currentId): void
 
     $myDb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $myDb->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
     try {
         $sql = 'SELECT * FROM heads WHERE dep_id = :currentId';
         $heads = $myDb->prepare($sql);

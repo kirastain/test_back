@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @param int $currentId
+ * @param array $headsList
+ * @throws Exception
+ */
 function updateHeads(int $currentId, array $headsList): void
 {
     global $myDb;
@@ -13,8 +18,9 @@ function updateHeads(int $currentId, array $headsList): void
             $upd->execute(array(':currentId' => $currentId, ':headName' => $headName));
         }
         printHeads($currentId);
-    } catch (PDOException $e) {
-        var_dump($e->getMessage());
+    } catch (\Exception $e) {
+        throw $e;
+        //var_dump($e->getMessage());
     }
 }
 

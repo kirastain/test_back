@@ -15,8 +15,9 @@ function printById(int $currentId): void
         $line->execute(array(':currentId' => $currentId));
         $result = $line->fetch(PDO::FETCH_ASSOC);
         print(json_encode($result, JSON_PRETTY_PRINT));
-    } catch (Exception $e) {
-        var_dump(($e->getMessage()));
+    } catch (\Exception $e) {
+        //var_dump(($e->getMessage()));
+        throw new IdException('Wrong id\n');
     }
 }
 
