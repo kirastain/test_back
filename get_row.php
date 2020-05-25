@@ -2,6 +2,7 @@
 
 /**
  * @param int $currentId
+ * @throws Exception
  */
 function printById(int $currentId): void
 {
@@ -16,8 +17,8 @@ function printById(int $currentId): void
         $result = $line->fetch(PDO::FETCH_ASSOC);
         print(json_encode($result, JSON_PRETTY_PRINT));
     } catch (\Exception $e) {
-        //var_dump(($e->getMessage()));
-        throw new IdException('Wrong id\n');
+        var_dump(($e->getMessage()));
+        throw new Exception('Wrong id\n');
     }
 }
 

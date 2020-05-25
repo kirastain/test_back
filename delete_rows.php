@@ -12,11 +12,12 @@ function deleteById(int $currentId): void
         $row->execute(array(':parentId' => $currentId));
         $rowId = $row->fetch(PDO::FETCH_ASSOC)["id"];
         print($rowId . " is rowid\n");
+        print("Now deleting " . $currentId . "\n");
         if ($rowId) {
             print("Child id is " . $rowId . "\n");
             deleteById($rowId);
         } else {
-            print("Now deleting " . $currentId . "\n");
+            //print("Now deleting " . $currentId . "\n");
             /*$sqlDelete = 'DELETE FROM maindata WHERE id = :currentId';
             $result = $myDb->prepare($sqlDelete);
             $result->execute(array(':currentId' => $currentId));*/

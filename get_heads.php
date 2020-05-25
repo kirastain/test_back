@@ -2,6 +2,7 @@
 
 /**
  * @param int $currentId
+ * @throws Exception
  */
 function printHeads(int $currentId): void
 {
@@ -15,8 +16,9 @@ function printHeads(int $currentId): void
         $heads->execute(array(':currentId' => $currentId));
         $result = $heads->fetchAll(PDO::FETCH_ASSOC);
         print(json_encode($result, JSON_PRETTY_PRINT));
-    } catch (PDOException $e) {
+    } catch (\PDOException $e) {
         var_dump($e->getMessage());
+        throw new Exception('Wrong id\n');
     }
 }
 

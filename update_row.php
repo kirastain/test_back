@@ -3,6 +3,7 @@
 /**
  * @param int $currentId
  * @param string $updData
+ * @throws Exception
  */
 function updateById(int $currentId, string $updData): void
 {
@@ -15,8 +16,9 @@ function updateById(int $currentId, string $updData): void
         $upd = $myDb->prepare($sql);
         $upd->execute(array(':updData' => $updData, ':currentId' => $currentId));
         printById($currentId);
-    } catch (Exception $e) {
+    } catch (\PDOException $e) {
         var_dump(($e->getMessage()));
+        throw new Exception('Wrong id\n');
     }
 }
 

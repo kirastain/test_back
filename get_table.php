@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * @throws Exception
  */
 function printTable(): void
 {
@@ -15,8 +15,9 @@ function printTable(): void
         $table->execute();
         $result = $table->fetchAll(PDO::FETCH_ASSOC);
         print(json_encode($result, JSON_PRETTY_PRINT));
-    } catch (PDOException $e) {
+    } catch (\PDOException $e) {
         var_dump($e->getMessage());
+        throw new Exception('Wrong id\n');
     }
 }
 
