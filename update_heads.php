@@ -18,9 +18,9 @@ function updateHeads(int $currentId, array $headsList): void
             $upd->execute(array(':currentId' => $currentId, ':headName' => $headName));
         }
         printHeads($currentId);
-    } catch (\Exception $e) {
-        throw $e;
-        //var_dump($e->getMessage());
+    } catch (\PDOException $e) {
+        var_dump($e->getMessage());
+        throw new Exception('Wrong id\n');
     }
 }
 

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @param int $currentId
+ * @throws Exception
+ */
 function deleteById(int $currentId): void
 {
     global $myDb;
@@ -10,19 +14,20 @@ function deleteById(int $currentId): void
         $sqlSearch = 'SELECT id FROM maindata WHERE parent_id = :parentId';
         $row = $myDb->prepare($sqlSearch);
         $row->execute(array(':parentId' => $currentId));
-        $rowId = $row->fetch(PDO::FETCH_ASSOC)["id"];
-        print($rowId . " is rowid\n");
-        print("Now deleting " . $currentId . "\n");
-        if ($rowId) {
-            print("Child id is " . $rowId . "\n");
-            deleteById($rowId);
-        } else {
-            //print("Now deleting " . $currentId . "\n");
-            /*$sqlDelete = 'DELETE FROM maindata WHERE id = :currentId';
-            $result = $myDb->prepare($sqlDelete);
-            $result->execute(array(':currentId' => $currentId));*/
+        $childIds = $row->fetchALL(PDO::FETCH_ASSOC);
+        print("We are in the $currentId, ");
+        $sqlDelete = 'DELETE FROM maindata WHERE id = :currentId';
+        $result = $myDb->prepare($sqlDelete);
+        $result->execute(array(':currentId' => $currentId));
+        if (!empty($childIds)) {
+            foreach ($childIds as $childId) {
+                $childId = $childId["id"];
+                print("Going to the $childId\n");
+                deleteById($childId);
+            }
         }
     } catch (\Exception $e) {
         var_dump($e->getMessage());
+        throw new Exception("Wrong Id\n");
     }
 }
