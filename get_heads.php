@@ -1,4 +1,5 @@
 <?php
+include 'access.php';
 
 /**
  * @param int $currentId
