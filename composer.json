@@ -1,0 +1,15 @@
+{
+  "name": "vendor_name/test_back",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "JARVIS",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "fpdf/fpdf": "^1.82"
+  }
+}
