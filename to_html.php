@@ -20,6 +20,7 @@ function printToHtml(): void
         foreach ($result as $row) {
             echo "<tr><td>" . $row["id"] . "</td><td>" . $row["main_data"] . "</td><td>" . $row["parent_id"] . "</td></tr>";
         }
+        echo "</table>";
     } catch (\PDOException $e) {
         var_dump($e->getMessage());
         throw new Exception('Wrong id\n');
