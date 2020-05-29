@@ -22,5 +22,13 @@ function printById(int $currentId): void
     }
 }
 
+try {
+    $currentId = (int)$_GET["id"];
+    if (isset($currentId)) {
+        printById($currentId);
+    }
+} catch (\Exception $e) {
+    throw new Exception("Wrong id\n");
+}
 //$currentId = (int)$_GET["id"];
 //printById($currentId);

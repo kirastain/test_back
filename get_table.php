@@ -21,4 +21,4 @@ function printTable(): void
     }
 }
 
-//printTable();
+printTable();

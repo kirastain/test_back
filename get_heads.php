@@ -22,5 +22,11 @@ function printHeads(int $currentId): void
     }
 }
 
-//$currentId = (int)$_GET["id"];
-//printHeads($currentId);
+try {
+    $currentId = (int)$_GET["id"];
+    if (isset($currentId)) {
+        printHeads($currentId);
+    }
+} catch (\Exception $e) {
+    throw new Exception(("Wrong id\n"));
+}

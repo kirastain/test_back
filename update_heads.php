@@ -24,6 +24,12 @@ function updateHeads(int $currentId, array $headsList): void
     }
 }
 
-//$currentId = $_POST['id'];
-//$updHeads = $_POST['name'];
-//updateHeads($currentId, $updHeads);
+try {
+    $currentId = (int)$_POST["id"];
+    $updHeads = $_POST['name'];
+    if (isset($currentId)) {
+        updateHeads($currentId, $updHeads);
+    }
+} catch (\Exception $e) {
+    throw new Exception(("Wrong id\n"));
+}
