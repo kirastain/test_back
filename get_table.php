@@ -18,7 +18,7 @@ function printTable(): void
         print(json_encode($result, JSON_PRETTY_PRINT));
     } catch (\PDOException $e) {
         var_dump($e->getMessage());
-        throw new Exception('Wrong id\n');
+        throw new Exception('An error occurred while printing the table\n');
     }
 }
 

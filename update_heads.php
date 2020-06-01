@@ -12,16 +12,18 @@ function updateHeads(int $currentId, array $headsList): void
 
     $myDb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $myDb->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $myDb->beginTransaction();
     try {
         $sql = 'UPDATE heads SET dep_id = :currentId WHERE head_name = :headName';
         foreach ($headsList as $headName) {
             $upd = $myDb->prepare($sql);
             $upd->execute(array(':currentId' => $currentId, ':headName' => $headName));
         }
-        printHeads($currentId);
+    $myDb->commit();
     } catch (\PDOException $e) {
         var_dump($e->getMessage());
-        throw new Exception('Wrong id\n');
+        $myDb->rollBack();
+        throw new Exception('An error occurred while trying to update heads\n');
     }
 }
 
@@ -32,5 +34,5 @@ try {
         updateHeads($currentId, $updHeads);
     }
 } catch (\Exception $e) {
-    throw new Exception(("Wrong id\n"));
+    throw new Exception(("Can't access data\n"));
 }

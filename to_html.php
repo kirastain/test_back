@@ -23,7 +23,7 @@ function printToHtml(): void
         echo "</table>";
     } catch (\PDOException $e) {
         var_dump($e->getMessage());
-        throw new Exception('Wrong id\n');
+        throw new Exception('An error occurred while converting to html\n');
     }
 }
 

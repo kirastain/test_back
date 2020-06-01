@@ -19,7 +19,7 @@ function printHeads(int $currentId): void
         print(json_encode($result, JSON_PRETTY_PRINT));
     } catch (\PDOException $e) {
         var_dump($e->getMessage());
-        throw new Exception('Wrong id\n');
+        throw new Exception('An error occurred while printing heads\n');
     }
 }
 
@@ -29,5 +29,5 @@ try {
         printHeads($currentId);
     }
 } catch (\Exception $e) {
-    throw new Exception(("Wrong id\n"));
+    throw new Exception(("Can't access data\n"));
 }

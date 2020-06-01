@@ -19,7 +19,7 @@ function printById(int $currentId): void
         print(json_encode($result, JSON_PRETTY_PRINT));
     } catch (\Exception $e) {
         var_dump(($e->getMessage()));
-        throw new Exception('Wrong id\n');
+        throw new Exception('An error occurred while printing the row\n');
     }
 }
 
@@ -29,7 +29,5 @@ try {
         printById($currentId);
     }
 } catch (\Exception $e) {
-    throw new Exception("Wrong id\n");
+    throw new Exception("Can't access data\n");
 }
-//$currentId = (int)$_GET["id"];
-//printById($currentId);
