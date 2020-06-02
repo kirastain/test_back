@@ -1,0 +1,8 @@
+
+.idea/misc.xml
+.idea/modules.xml
+*.iml
+*.xml
+main.php
+methods.php
+vendor
