@@ -23,11 +23,9 @@ function printHeads(int $currentId): void
     }
 }
 
-try {
-    $currentId = (int)$_GET["id"];
-    if (isset($currentId)) {
-        printHeads($currentId);
-    }
-} catch (\Exception $e) {
-    throw new Exception(("Can't access data\n"));
+$currentId = $_GET["id"];
+if (!isset($currentId)) {
+    throw new Exception("Can't access data\n");
 }
+$currentId = (int)$currentId;
+printHeads($currentId);

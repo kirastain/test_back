@@ -23,11 +23,9 @@ function printById(int $currentId): void
     }
 }
 
-try {
-    $currentId = (int)$_GET["id"];
-    if (isset($currentId)) {
-        printById($currentId);
-    }
-} catch (\Exception $e) {
+$currentId = $_GET["id"];
+if (!isset($currentId)) {
     throw new Exception("Can't access data\n");
 }
+$currentId = (int)$currentId;
+printById($currentId);

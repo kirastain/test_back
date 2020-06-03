@@ -27,12 +27,10 @@ function updateHeads(int $currentId, array $headsList): void
     }
 }
 
-try {
-    $currentId = (int)$_POST["id"];
-    $updHeads = $_POST['name'];
-    if (isset($currentId)) {
-        updateHeads($currentId, $updHeads);
-    }
-} catch (\Exception $e) {
-    throw new Exception(("Can't access data\n"));
+$currentId = $_POST["id"];
+$updHeads = $_POST['name'];
+if (!isset($currentId)) {
+    throw new Exception("Can't access data\n");
 }
+$currentId = (int)$currentId;
+updateHeads($currentId, $updHeads);

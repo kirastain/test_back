@@ -23,12 +23,10 @@ function updateById(int $currentId, string $updData): void
     }
 }
 
-try {
-    $currentId = (int)$_POST["id"];
-    $upData = (string)$_POST["main_data"];
-    if (isset($currentId)) {
-        updateById($currentId, $upData);
-    }
-} catch (\Exception $e) {
-    throw new Exception(("Wrong id\n"));
+$currentId = $_POST["id"];
+$upData = (string)$_POST["main_data"];
+if (!isset($currentId)) {
+    throw new Exception("Wrong id\n");
 }
+$currentId = (int)$currentId;
+updateById($currentId, $upData);
