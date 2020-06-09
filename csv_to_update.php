@@ -1,7 +1,5 @@
 <?php
 include 'access.php';
-include 'update_row.php';
-include 'add_row.php';
 
 /**
  * @param $file
@@ -17,19 +15,15 @@ function fromCsv($file): void
 
     $myDb->beginTransaction();
     try {
+        $sqlTrunc = "TRUNCATE TABLE maindata";
+        $trunc = $myDb->prepare($sqlTrunc);
+        $trunc->execute();
         while ($line = fgetcsv($file)) {
             $num = count($line);
-            print ($line[2] . "\n");
-            if ($num == $cells && is_numeric($line[0]) == true) {
-                $sql = "SELECT id FROM maindata WHERE id = :id";
-                $exists = $myDb->prepare($sql);
-                $exists->execute(array(':id' => (int)$line[0]));
-                $result = $exists->fetch(PDO::FETCH_ASSOC);
-                if (isset($result["id"])) {
-                    updateById($line[0], $line[1], $line[2]);
-                } else {
-                    addRow($line[1], $line[2]);
-                }
+            if ($num == $cells && is_numeric($line[0]) == true && is_numeric($line[2])) {
+                $sqlNew = "INSERT INTO maindata (id, main_data, parent_id) VALUES (:id, :newData, :parentId)";
+                $result = $myDb->prepare($sqlNew);
+                $result->execute(array(':id' => $line[0],  ':newData' => $line[1], ':parentId' => $line[2]));
             }
             else {
                 throw new PDOException('Wrong data format');
