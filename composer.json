@@ -11,7 +11,8 @@
   ],
   "require": {
     "fpdf/fpdf": "^1.82",
-    "phpoffice/phpexcel": "1.8.2",
-    "ext-pdo": "*"
+    "phpoffice/phpspreadsheet": "1.8.2",
+    "ext-pdo": "*",
+    "symfony/asset": "^5.1"
   }
 }
